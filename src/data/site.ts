@@ -9,7 +9,11 @@
  */
 export const SUPPORT_EMAIL = 'support@vaultifyuk.co.uk';
 
-/** Canonical Labs website. */
+/**
+ * Canonical Labs website. Not linked anywhere yet (John, 25 Nov 2026): it is
+ * still the Squarespace site with unconfirmed product claims. The Labs website
+ * cutover job restores the "Labs website ↗" link (header, phone menu, footer).
+ */
 export const LABS_URL = 'https://labs.vaultifyuk.co.uk';
 
 /**

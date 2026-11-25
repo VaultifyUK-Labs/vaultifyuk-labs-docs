@@ -200,7 +200,6 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 				Footer: './src/components/Footer.astro',
 				PageFrame: './src/components/PageFrame.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
-				SocialIcons: './src/components/SocialIcons.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			social: [],

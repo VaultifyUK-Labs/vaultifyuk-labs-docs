@@ -69,7 +69,7 @@ src/assets/screenshots/<product-name>/screenshot-name.png
 
 ## Deployment
 
-Cloudflare Workers Builds deploys `main` automatically to the Worker `vaultifyuk-labs-docs` (custom domain `docs.labs.vaultifyuk.co.uk`). See `CLAUDE.md` for the release, check and rollback steps.
+Cloudflare Workers Builds deploys `main` automatically to the Worker `vaultifyuk-labs-docs`, served only on the custom domain `docs.labs.vaultifyuk.co.uk`. Every pull request gets a Cloudflare branch preview (noindex) and the required check `Workers Builds: vaultifyuk-labs-docs`. See `CLAUDE.md` for the release, check, workers.dev and rollback details, and for the temporary withdrawal of the Smart Collections pages and Labs website links.
 
 ## Maintenance Notes
 

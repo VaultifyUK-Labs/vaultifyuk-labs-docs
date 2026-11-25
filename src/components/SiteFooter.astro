@@ -1,5 +1,5 @@
 ---
-import { SUPPORT_EMAIL, LABS_URL, LEGAL_LINKS } from '../data/site';
+import { SUPPORT_EMAIL, LEGAL_LINKS } from '../data/site';
 const year = new Date().getFullYear();
 ---
 
@@ -10,7 +10,6 @@ const year = new Date().getFullYear();
 				Vaultify<span class="site-footer__name--gold">UK</span> Labs
 			</span>
 			<p class="site-footer__desc">Documentation for VaultifyUK Labs, the technology division of VaultifyUK Limited.</p>
-			<a class="site-footer__labs" href={LABS_URL}>Labs website<span aria-hidden="true"> ↗</span></a>
 		</div>
 
 		<nav class="site-footer__nav" aria-label="Site footer navigation">
@@ -104,17 +103,6 @@ const year = new Date().getFullYear();
 		color: var(--vault-soft);
 		line-height: 1.6;
 		margin: 0;
-	}
-
-	.site-footer__labs {
-		font-size: var(--sl-text-sm);
-		color: var(--vault-muted);
-		text-decoration: none;
-		margin-top: 0.25rem;
-	}
-
-	.site-footer__labs:hover {
-		color: var(--vault-gold);
 	}
 
 	.site-footer__nav {
