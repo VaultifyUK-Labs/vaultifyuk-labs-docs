@@ -124,5 +124,6 @@ replace them with real images (`src/assets/screenshots/<product>/`) before resto
 
 - Visual alignment (headings, buttons, accent colour): `brand-align-docs-visual`.
 - Docs privacy (Cloudflare Web Analytics, browser storage, NEL): `labs-docs-privacy-followups`.
-  The forced-dark-mode and sidebar/TOC scripts in `astro.config.mjs` write to `localStorage`;
-  change them only through that job.
+  The site is dark only and stores no theme (`ThemeProvider` / `ThemeSelect` overrides, PR #8).
+  The sidebar/TOC script in `astro.config.mjs` writes to `localStorage`; change it only through
+  that job.

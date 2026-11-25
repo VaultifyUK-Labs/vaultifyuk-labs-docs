@@ -545,11 +545,6 @@ starlight-tabs [role="tabpanel"] th {
 }
 
 
-/* Force dark-only — theme picker is hidden via config head script */
-starlight-theme-select {
-  display: none;
-}
-
 /* ─── Sidebar collapse ─────────────────────────────────────────────────────── */
 
 /* Buttons hidden by default — shown only in the relevant media queries */
