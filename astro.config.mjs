@@ -127,12 +127,6 @@ export default defineConfig({
 			favicon: '/favicon.svg',
 			head: [
 				{
-					// Force dark mode permanently — runs after ThemeProvider but before paint.
-					// Sets both dataset.theme and localStorage so the preference survives navigation.
-					tag: 'script',
-					content: `(function(){document.documentElement.dataset.theme='dark';try{localStorage.setItem('starlight-theme','dark');}catch(e){}})();`,
-				},
-				{
 					// Sidebar + TOC collapse — restores persisted state before paint, then
 					// creates both toggle buttons once the DOM is ready.
 					tag: 'script',
@@ -186,6 +180,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 				Head: './src/components/Head.astro',
 				Footer: './src/components/Footer.astro',
 				PageFrame: './src/components/PageFrame.astro',
+				ThemeProvider: './src/components/ThemeProvider.astro',
+				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			social: [],
