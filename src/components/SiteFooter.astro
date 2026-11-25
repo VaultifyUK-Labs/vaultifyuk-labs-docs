@@ -1,4 +1,5 @@
 ---
+import { SUPPORT_EMAIL, LABS_URL, LEGAL_LINKS } from '../data/site';
 const year = new Date().getFullYear();
 ---
 
@@ -8,24 +9,22 @@ const year = new Date().getFullYear();
 			<span class="site-footer__name">
 				Vaultify<span class="site-footer__name--gold">UK</span> Labs
 			</span>
-			<p class="site-footer__desc">Documentation for VaultifyUK tools and automation products.</p>
+			<p class="site-footer__desc">Documentation for VaultifyUK Labs, the technology division of VaultifyUK Limited.</p>
+			<a class="site-footer__labs" href={LABS_URL}>Labs website<span aria-hidden="true"> ↗</span></a>
 		</div>
 
 		<nav class="site-footer__nav" aria-label="Site footer navigation">
 			<div class="site-footer__col">
 				<span class="site-footer__heading">Products</span>
-				<a href="/smart-collections/overview/">Smart Collections</a>
+				<a href="/smart-collections/">Smart Collections</a>
 			</div>
 			<div class="site-footer__col">
 				<span class="site-footer__heading">Support</span>
-				<a href="mailto:support@vaultifyuk.co.uk">support@labs.vaultifyuk.co.uk</a>
+				<a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
 			</div>
 			<div class="site-footer__col site-footer__col--grid">
 				<span class="site-footer__heading">Legal</span>
-				<a href="https://www.labs.vaultifyuk.co.uk/privacy">Privacy Policy</a>
-				<a href="https://www.labs.vaultifyuk.co.uk/terms">Terms of Service</a>
-				<a href="https://www.labs.vaultifyuk.co.uk/cookies">Cookie Policy</a>
-				<a href="https://www.labs.vaultifyuk.co.uk/subprocessors">Subprocessors</a>
+				{LEGAL_LINKS.map(({ label, href }) => <a href={href}>{label}</a>)}
 			</div>
 		</nav>
 	</div>
@@ -105,6 +104,17 @@ const year = new Date().getFullYear();
 		color: var(--vault-soft);
 		line-height: 1.6;
 		margin: 0;
+	}
+
+	.site-footer__labs {
+		font-size: var(--sl-text-sm);
+		color: var(--vault-muted);
+		text-decoration: none;
+		margin-top: 0.25rem;
+	}
+
+	.site-footer__labs:hover {
+		color: var(--vault-gold);
 	}
 
 	.site-footer__nav {

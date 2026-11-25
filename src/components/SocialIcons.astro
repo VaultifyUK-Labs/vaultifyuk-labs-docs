@@ -1,0 +1,23 @@
+---
+// Replaces Starlight's social icons slot (desktop header right-hand group and
+// the phone menu footer) with a link to the Labs website.
+import { LABS_URL } from '../data/site';
+---
+
+<a href={LABS_URL} class="labs-link">Labs website<span aria-hidden="true"> ↗</span></a>
+
+<style>
+	.labs-link {
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		font-size: var(--sl-text-sm);
+		font-weight: 600;
+		color: var(--vault-muted);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.labs-link:hover {
+		color: var(--vault-gold);
+	}
+</style>

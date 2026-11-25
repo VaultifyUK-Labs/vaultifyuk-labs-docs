@@ -8,7 +8,7 @@ This repository contains the merchant-facing documentation site for VaultifyUK L
 
 ## Current Product Docs
 
-- **Smart Collections** — rule-based Shopify collection management
+- **Smart Collections**: In review. Its detailed pages are withdrawn from the public build; see `CLAUDE.md`, "Withdrawn documentation".
 
 ## Tech Stack
 
@@ -18,7 +18,7 @@ This repository contains the merchant-facing documentation site for VaultifyUK L
 | Docs theme | [Astro Starlight](https://starlight.astro.build) |
 | Content | Markdown / MDX |
 | Search | Pagefind (built-in via Starlight) |
-| Deployment | Cloudflare Pages |
+| Deployment | Cloudflare Workers Builds (static assets) |
 
 ## Local Development
 
@@ -69,14 +69,7 @@ src/assets/screenshots/<product-name>/screenshot-name.png
 
 ## Deployment
 
-The site deploys automatically via Cloudflare Pages on push to `main`.
-
-| Setting | Value |
-| --- | --- |
-| Framework preset | Astro |
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| Custom domain | `docs.labs.vaultifyuk.co.uk` |
+Cloudflare Workers Builds deploys `main` automatically to the Worker `vaultifyuk-labs-docs` (custom domain `docs.labs.vaultifyuk.co.uk`). See `CLAUDE.md` for the release, check and rollback steps.
 
 ## Maintenance Notes
 

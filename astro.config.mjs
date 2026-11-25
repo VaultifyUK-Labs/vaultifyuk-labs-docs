@@ -11,6 +11,17 @@ import { fileURLToPath } from 'node:url';
 const sidebar = [
 	{
 		label: 'Smart Collections',
+		items: [{ label: 'Product status', slug: 'smart-collections' }],
+	},
+];
+
+// The Smart Collections sidebar as it was before the pages were withdrawn
+// (25 Nov 2026, Smart Collections In review). Not used. To restore the pages,
+// see CLAUDE.md, "Withdrawn documentation".
+// eslint-disable-next-line no-unused-vars
+const withdrawnSmartCollectionsSidebar = [
+	{
+		label: 'Smart Collections',
 		items: [
 			{ label: 'Overview', slug: 'smart-collections/overview' },
 			{ label: 'Getting Started', slug: 'smart-collections/getting-started' },
@@ -116,10 +127,7 @@ export default defineConfig({
 		autoSectionRedirects(sidebar),
 		starlight({
 			title: 'VaultifyUK Labs Documentation',
-			description: 'Documentation and knowledge base for VaultifyUK Labs products — Shopify tools, automation, and SaaS.',
-			editLink: {
-				baseUrl: 'https://github.com/VaultifyUK/vaultifyuk-labs-docs/edit/main/'
-			},
+			description: 'Documentation for VaultifyUK Labs, the technology division of VaultifyUK Limited.',
 			logo: {
 				src: './src/assets/logo.svg',
 				alt: 'VaultifyUK Labs',
@@ -186,6 +194,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 				Head: './src/components/Head.astro',
 				Footer: './src/components/Footer.astro',
 				PageFrame: './src/components/PageFrame.astro',
+				SiteTitle: './src/components/SiteTitle.astro',
+				SocialIcons: './src/components/SocialIcons.astro',
 			},
 			customCss: ['./src/styles/custom.css'],
 			social: [],
