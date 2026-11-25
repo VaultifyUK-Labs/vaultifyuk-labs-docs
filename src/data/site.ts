@@ -1,13 +1,23 @@
 // Shared links for the docs site. Change an address here and every page that
 // uses it follows (footer, header, homepage, Smart Collections status page).
 
-/** Labs support mailbox: the displayed address and the mailto destination. */
-export const SUPPORT_EMAIL = 'support@labs.vaultifyuk.co.uk';
+/**
+ * Support address: the displayed address and the mailto destination.
+ * Interim: support@vaultifyuk.co.uk (John, 25 Nov 2026) until mail for
+ * @labs.vaultifyuk.co.uk is configured and independently validated (job
+ * labs-email-dns). Then change it back to support@labs.vaultifyuk.co.uk.
+ */
+export const SUPPORT_EMAIL = 'support@vaultifyuk.co.uk';
 
 /** Canonical Labs website. */
 export const LABS_URL = 'https://labs.vaultifyuk.co.uk';
 
-/** Smart Collections product page on the Labs website. */
+/**
+ * Smart Collections product page on the Labs website. Not linked anywhere yet
+ * (John, 25 Nov 2026): the live page is still the Squarespace one with plans,
+ * a trial and "Install Free". The Labs website cutover job validates the new
+ * page, then restores the link on smart-collections/index.mdx.
+ */
 export const SMART_COLLECTIONS_PRODUCT_URL = `${LABS_URL}/products/smart-collections`;
 
 /** Labs legal documents (canonical host; the paths stay the same after the website cutover). */

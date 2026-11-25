@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 const sidebar = [
 	{
 		label: 'Smart Collections',
-		items: [{ label: 'Product status', slug: 'smart-collections' }],
+		items: [{ label: 'Product status', slug: 'smart-collections/status' }],
 	},
 ];
 
@@ -47,7 +47,7 @@ const withdrawnSmartCollectionsSidebar = [
 // Astro integration that appends Cloudflare Pages redirect rules to dist/_redirects
 // after each build.  For every top-level sidebar group whose section root has no
 // index.md / index.mdx, it writes a 301 from /{section}/ to the first page in
-// that group.  Adding a new product section automatically gets a redirect — no
+// that group, unless public/_redirects already has a rule for /{section}/.  Adding a new product section automatically gets a redirect — no
 // manual editing of public/_redirects required.
 
 /** Recursively find the slug of the first page entry in a sidebar items tree. */
@@ -84,7 +84,12 @@ function autoSectionRedirects(sidebarGroups) {
 						access(join(contentBase, section, 'index.mdx')),
 					]).then(() => true).catch(() => false);
 
-					if (!hasIndex) {
+					// Skip if public/_redirects already has a rule for the section root
+					// (e.g. a temporary 302 while a section's pages are withdrawn).
+					const manual = await readFile(resolve('./public/_redirects'), 'utf-8').catch(() => '');
+					const hasManualRule = manual.split('\n').some((line) => line.trim().startsWith(`/${section}/ `) || line.trim().startsWith(`/${section} `));
+
+					if (!hasIndex && !hasManualRule) {
 						rules.push(`/${section}/  /${firstSlug}/  301`);
 						rules.push(`/${section}   /${firstSlug}/  301`);
 					}
