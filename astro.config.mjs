@@ -11,6 +11,17 @@ import { fileURLToPath } from 'node:url';
 const sidebar = [
 	{
 		label: 'Smart Collections',
+		items: [{ label: 'Product status', slug: 'smart-collections/status' }],
+	},
+];
+
+// The Smart Collections sidebar as it was before the pages were withdrawn
+// (25 Nov 2026, Smart Collections In review). Not used. To restore the pages,
+// see CLAUDE.md, "Withdrawn documentation".
+// eslint-disable-next-line no-unused-vars
+const withdrawnSmartCollectionsSidebar = [
+	{
+		label: 'Smart Collections',
 		items: [
 			{ label: 'Overview', slug: 'smart-collections/overview' },
 			{ label: 'Getting Started', slug: 'smart-collections/getting-started' },
@@ -36,7 +47,7 @@ const sidebar = [
 // Astro integration that appends Cloudflare Pages redirect rules to dist/_redirects
 // after each build.  For every top-level sidebar group whose section root has no
 // index.md / index.mdx, it writes a 301 from /{section}/ to the first page in
-// that group.  Adding a new product section automatically gets a redirect — no
+// that group, unless public/_redirects already has a rule for /{section}/.  Adding a new product section automatically gets a redirect — no
 // manual editing of public/_redirects required.
 
 /** Recursively find the slug of the first page entry in a sidebar items tree. */
@@ -73,7 +84,12 @@ function autoSectionRedirects(sidebarGroups) {
 						access(join(contentBase, section, 'index.mdx')),
 					]).then(() => true).catch(() => false);
 
-					if (!hasIndex) {
+					// Skip if public/_redirects already has a rule for the section root
+					// (e.g. a temporary 302 while a section's pages are withdrawn).
+					const manual = await readFile(resolve('./public/_redirects'), 'utf-8').catch(() => '');
+					const hasManualRule = manual.split('\n').some((line) => line.trim().startsWith(`/${section}/ `) || line.trim().startsWith(`/${section} `));
+
+					if (!hasIndex && !hasManualRule) {
 						rules.push(`/${section}/  /${firstSlug}/  301`);
 						rules.push(`/${section}   /${firstSlug}/  301`);
 					}
@@ -116,10 +132,7 @@ export default defineConfig({
 		autoSectionRedirects(sidebar),
 		starlight({
 			title: 'VaultifyUK Labs Documentation',
-			description: 'Documentation and knowledge base for VaultifyUK Labs products — Shopify tools, automation, and SaaS.',
-			editLink: {
-				baseUrl: 'https://github.com/VaultifyUK/vaultifyuk-labs-docs/edit/main/'
-			},
+			description: 'Documentation for VaultifyUK Labs, the technology division of VaultifyUK Limited.',
 			logo: {
 				src: './src/assets/logo.svg',
 				alt: 'VaultifyUK Labs',
@@ -180,6 +193,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 				Head: './src/components/Head.astro',
 				Footer: './src/components/Footer.astro',
 				PageFrame: './src/components/PageFrame.astro',
+				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
 				ThemeSelect: './src/components/ThemeSelect.astro',
 			},

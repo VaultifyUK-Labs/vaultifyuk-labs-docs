@@ -1,0 +1,66 @@
+# Cache-Control: no-store on the temporary 302s for the withdrawn Smart Collections
+# pages (one entry per redirect in public/_redirects; same paths, nothing else).
+# Browsers and the Cloudflare edge then never keep them, so a restored page is
+# reachable straight away. To restore a page, delete its entries here and in
+# public/_redirects (see CLAUDE.md, "Withdrawn documentation").
+
+/smart-collections/
+  Cache-Control: no-store
+/smart-collections
+  Cache-Control: no-store
+/smart-collections/overview/
+  Cache-Control: no-store
+/smart-collections/overview
+  Cache-Control: no-store
+/smart-collections/getting-started/
+  Cache-Control: no-store
+/smart-collections/getting-started
+  Cache-Control: no-store
+/smart-collections/creating-and-taking-over-collections/
+  Cache-Control: no-store
+/smart-collections/creating-and-taking-over-collections
+  Cache-Control: no-store
+/smart-collections/rule-based-collections/
+  Cache-Control: no-store
+/smart-collections/rule-based-collections
+  Cache-Control: no-store
+/smart-collections/composed-collections/
+  Cache-Control: no-store
+/smart-collections/composed-collections
+  Cache-Control: no-store
+/smart-collections/product-pins/
+  Cache-Control: no-store
+/smart-collections/product-pins
+  Cache-Control: no-store
+/smart-collections/sorting-and-automation/
+  Cache-Control: no-store
+/smart-collections/sorting-and-automation
+  Cache-Control: no-store
+/smart-collections/sync-dashboard/
+  Cache-Control: no-store
+/smart-collections/sync-dashboard
+  Cache-Control: no-store
+/smart-collections/billing-and-plans/
+  Cache-Control: no-store
+/smart-collections/billing-and-plans
+  Cache-Control: no-store
+/smart-collections/troubleshooting/
+  Cache-Control: no-store
+/smart-collections/troubleshooting
+  Cache-Control: no-store
+/smart-collections/faq/
+  Cache-Control: no-store
+/smart-collections/faq
+  Cache-Control: no-store
+/smart-collections/activity/
+  Cache-Control: no-store
+/smart-collections/activity
+  Cache-Control: no-store
+/smart-collections/overview-dashboard/
+  Cache-Control: no-store
+/smart-collections/overview-dashboard
+  Cache-Control: no-store
+/smart-collections/sales-channel-management/
+  Cache-Control: no-store
+/smart-collections/sales-channel-management
+  Cache-Control: no-store

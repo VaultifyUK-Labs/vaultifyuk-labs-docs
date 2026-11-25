@@ -2,6 +2,15 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "vaultifyuk-labs-docs",
   "compatibility_date": "2026-06-09",
+  // Production is served only on the custom domain docs.labs.vaultifyuk.co.uk
+  // (attached in the Cloudflare dashboard; `wrangler deploy` leaves it alone
+  // because no routes are listed here). The production workers.dev address is
+  // off (John, 25 Nov 2026).
+  "workers_dev": false,
+  // Keep Workers Builds branch previews (<version>/<branch>-vaultifyuk-labs-docs
+  // .john-b5e.workers.dev, sent with x-robots-tag: noindex). Set explicitly:
+  // left unset, preview URLs follow workers_dev and would be switched off too.
+  "preview_urls": true,
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page"

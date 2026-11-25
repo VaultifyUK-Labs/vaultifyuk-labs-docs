@@ -1,2 +1,40 @@
 # Manual redirect overrides — section index redirects are auto-generated
 # by the autoSectionRedirects integration in astro.config.mjs at build time.
+
+# Smart Collections pages withdrawn on 25 Nov 2026 while the product is In review.
+# 302 (temporary) to the status page: the original paths may return after the
+# reassessment. Exact paths only, so any other unknown path is a real 404.
+# To restore a page, delete its two lines here (see CLAUDE.md).
+# The status page has its own path (not /smart-collections/) because the old
+# site sent /smart-collections/ to /smart-collections/overview/ with a 301,
+# which browsers keep: a 302 back to /smart-collections/ would loop for them.
+/smart-collections/  /smart-collections/status/  302
+/smart-collections   /smart-collections/status/  302
+/smart-collections/overview/  /smart-collections/status/  302
+/smart-collections/overview   /smart-collections/status/  302
+/smart-collections/getting-started/  /smart-collections/status/  302
+/smart-collections/getting-started   /smart-collections/status/  302
+/smart-collections/creating-and-taking-over-collections/  /smart-collections/status/  302
+/smart-collections/creating-and-taking-over-collections   /smart-collections/status/  302
+/smart-collections/rule-based-collections/  /smart-collections/status/  302
+/smart-collections/rule-based-collections   /smart-collections/status/  302
+/smart-collections/composed-collections/  /smart-collections/status/  302
+/smart-collections/composed-collections   /smart-collections/status/  302
+/smart-collections/product-pins/  /smart-collections/status/  302
+/smart-collections/product-pins   /smart-collections/status/  302
+/smart-collections/sorting-and-automation/  /smart-collections/status/  302
+/smart-collections/sorting-and-automation   /smart-collections/status/  302
+/smart-collections/sync-dashboard/  /smart-collections/status/  302
+/smart-collections/sync-dashboard   /smart-collections/status/  302
+/smart-collections/billing-and-plans/  /smart-collections/status/  302
+/smart-collections/billing-and-plans   /smart-collections/status/  302
+/smart-collections/troubleshooting/  /smart-collections/status/  302
+/smart-collections/troubleshooting   /smart-collections/status/  302
+/smart-collections/faq/  /smart-collections/status/  302
+/smart-collections/faq   /smart-collections/status/  302
+/smart-collections/activity/  /smart-collections/status/  302
+/smart-collections/activity   /smart-collections/status/  302
+/smart-collections/overview-dashboard/  /smart-collections/status/  302
+/smart-collections/overview-dashboard   /smart-collections/status/  302
+/smart-collections/sales-channel-management/  /smart-collections/status/  302
+/smart-collections/sales-channel-management   /smart-collections/status/  302

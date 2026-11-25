@@ -1,0 +1,79 @@
+---
+// Emblem + VAULTIFYUK LABS wordmark. The logo is the docs-home link. A separate
+// "Labs website ↗" link is held back until the Labs website cutover (CLAUDE.md).
+import logo from '../assets/logo.svg';
+const { siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title sl-flex" aria-label="VaultifyUK Labs Docs home">
+	<img src={logo.src} width={logo.width} height={logo.height} alt="" />
+	<span class="wordmark" translate="no">Vaultify<span class="wordmark__uk">UK</span> Labs</span>
+	<span class="docs-label" translate="no">Docs</span>
+</a>
+
+<style>
+	@layer starlight.core {
+		.site-title {
+			align-items: center;
+			gap: 0.6rem;
+			text-decoration: none;
+			white-space: nowrap;
+			min-width: 0;
+		}
+		img {
+			height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+			width: auto;
+			flex-shrink: 0;
+		}
+	}
+	/* custom.css hides `.site-title span` (the old title text); these scoped
+	   selectors are more specific, so the wordmark shows. */
+	.site-title .wordmark {
+		display: inline;
+		font-size: var(--sl-text-base);
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--vault-text);
+	}
+	.site-title .wordmark__uk {
+		display: inline;
+		color: var(--vault-gold);
+	}
+	.site-title .docs-label {
+		display: inline;
+		font-size: var(--sl-text-sm);
+		font-weight: 500;
+		color: var(--vault-soft);
+		padding-inline-start: 0.6rem;
+		border-inline-start: 1px solid var(--vault-border-gold);
+	}
+	/* Phones: keep the whole wordmark visible beside search and the menu. */
+	@media (max-width: 30rem), (min-width: 50rem) and (max-width: 64rem) {
+		.site-title .wordmark {
+			font-size: var(--sl-text-sm);
+			letter-spacing: 0.03em;
+		}
+	}
+	/* Just above the 50rem breakpoint Starlight's title column is at its
+	   narrowest (about 168px): compact emblem and wordmark. */
+	@media (min-width: 50rem) and (max-width: 57rem) {
+		.site-title {
+			gap: 0.45rem;
+		}
+		.site-title img {
+			height: 1.75rem;
+		}
+		.site-title .wordmark {
+			font-size: var(--sl-text-xs);
+			letter-spacing: 0.02em;
+		}
+	}
+	/* Tablet and small desktop: Starlight's title column is narrower than the
+	   wordmark plus the Docs label, so the label goes there too. */
+	@media (max-width: 22.5rem), (min-width: 50rem) and (max-width: 80rem) {
+		.site-title .docs-label {
+			display: none;
+		}
+	}
+</style>
