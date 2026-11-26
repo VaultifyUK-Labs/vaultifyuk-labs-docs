@@ -120,10 +120,30 @@ To restore or replace a page (only once its content is approved and accurate):
 Screenshots in the withdrawn pages point at `/screenshots/placeholder.png`, which never existed:
 replace them with real images (`src/assets/screenshots/<product>/`) before restoring a page.
 
+## Privacy and browser storage
+
+Settled by John on 25 Nov 2026; don't reopen without new, material evidence.
+
+- **Dark only, no theme storage.** The `ThemeProvider` and `ThemeSelect` overrides (PR #8) fix
+  the site to the dark theme and never write a theme preference to the browser. There is no
+  theme switcher and no docs-specific preference system.
+- **Cloudflare Web Analytics is disabled zone-wide** (`vaultifyuk.co.uk`, all Labs sites). The
+  site sends no analytics and sets no cookies. When checking, fetch pages with
+  `-H 'Accept: text/html'` (Cloudflare only injects its beacon into HTML responses) and, in a
+  browser test, intercept `/cdn-cgi/rum` rather than letting it through. If a beacon appears,
+  report it; don't assume it's approved.
+- **Functional storage only** (kept as it is):
+  - `vault-sidebar-collapsed` and `vault-toc-collapsed` (`localStorage`, script in
+    `astro.config.mjs`): written only when the visitor presses the sidebar or contents toggle,
+    to remember that layout choice.
+  - `sl-sidebar-state` (`sessionStorage`, Starlight's own): sidebar scroll and open groups for
+    the current tab; cleared when the tab closes.
+- Cloudflare Network Error Logging headers stay as operational processing.
+- Any future usage statistics or optional storage follow the company-wide privacy architecture:
+  ADR-014 and `vk-stats` in `vaultifyuk-storefront` (`docs/privacy/README.md`), with the
+  Privacy Centre at vaultifyuk.co.uk/pages/privacy. A "Privacy preferences" link in the footer
+  waits for the cross-site decision in job `brand-align-storefront`.
+
 ## Related jobs
 
 - Visual alignment (headings, buttons, accent colour): `brand-align-docs-visual`.
-- Docs privacy (Cloudflare Web Analytics, browser storage, NEL): `labs-docs-privacy-followups`.
-  The site is dark only and stores no theme (`ThemeProvider` / `ThemeSelect` overrides, PR #8).
-  The sidebar/TOC script in `astro.config.mjs` writes to `localStorage`; change it only through
-  that job.
